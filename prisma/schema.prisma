@@ -1,0 +1,110 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  password      String?
+  image         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  dailyLogs     DailyLog[]
+  foodAnalyses  FoodAnalysis[]
+  bodyAnalyses  BodyAnalysis[]
+  damageReports DamageReport[]
+  chatMessages  ChatMessage[]
+}
+
+model DailyLog {
+  id                 String   @id @default(cuid())
+  userId             String
+  logDate            DateTime @default(now())
+  sleepHours         Float    @default(7)
+  moodScore          Float    @default(5)
+  studyHours         Float    @default(0)
+  exerciseMinutes    Float    @default(0)
+  screenTimeHours    Float    @default(0)
+  focusScore         Float    @default(5)
+  stressLevel        Float    @default(5)
+  productivityScore  Float    @default(5)
+  waterIntake        Float    @default(8)
+  caffeineMg         Float    @default(0)
+  calories           Float    @default(0)
+  notes              String   @default("")
+  createdAt          DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, logDate])
+}
+
+model FoodAnalysis {
+  id              String   @id @default(cuid())
+  userId          String
+  foodName        String
+  imageUrl        String?
+  calories        Float
+  protein         Float
+  carbs           Float
+  fat             Float
+  fiber           Float
+  sugar           Float
+  sodium          Float
+  healthScore     Float
+  confidence      Float
+  recommendations String
+  createdAt       DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model BodyAnalysis {
+  id                String   @id @default(cuid())
+  userId            String
+  height            Float
+  weight            Float
+  age               Int
+  gender            String
+  activityLevel     String
+  sleepDuration     Float
+  waterIntake       Float
+  bmi               Float
+  healthScore       Float
+  bodyCategory      String
+  recommendations   String
+  createdAt         DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model DamageReport {
+  id              String   @id @default(cuid())
+  userId          String
+  deviceType      String
+  imageUrl        String?
+  defects         String
+  severity        String
+  repairCost      String
+  recommendations String
+  createdAt       DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model ChatMessage {
+  id        String   @id @default(cuid())
+  userId    String
+  role      String
+  content   String
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
