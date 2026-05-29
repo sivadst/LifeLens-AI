@@ -48,31 +48,34 @@ export default function ImageUpload({ onImageSelect, label = "Upload Image" }: I
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            {...getRootProps()}
-            className={`relative border-2 border-dashed rounded-2xl p-12 text-center cursor-pointer transition-all duration-300 ${
-              isDragActive
-                ? "border-[var(--color-accent-cyan)] bg-[rgba(0,212,255,0.05)]"
-                : "border-[var(--color-border-subtle)] hover:border-[var(--color-accent-cyan)] hover:bg-[rgba(0,212,255,0.02)]"
-            }`}
           >
-            <input {...getInputProps()} />
-            <div className="flex flex-col items-center gap-4">
-              <div
-                className={`w-16 h-16 rounded-2xl flex items-center justify-center transition-colors ${
-                  isDragActive
-                    ? "bg-[rgba(0,212,255,0.15)]"
-                    : "bg-[rgba(0,212,255,0.08)]"
-                }`}
-              >
-                <Upload className="w-8 h-8 text-[var(--color-accent-cyan)]" />
-              </div>
-              <div>
-                <p className="text-lg font-semibold text-[var(--color-text-primary)]">
-                  {isDragActive ? "Drop your image here" : label}
-                </p>
-                <p className="text-sm text-[var(--color-text-muted)] mt-1">
-                  Drag & drop or click to browse • PNG, JPG, WebP up to 10MB
-                </p>
+            <div
+              {...getRootProps()}
+              className={`relative border-2 border-dashed rounded-2xl p-12 text-center cursor-pointer transition-all duration-300 ${
+                isDragActive
+                  ? "border-[var(--color-accent-cyan)] bg-[rgba(0,212,255,0.05)]"
+                  : "border-[var(--color-border-subtle)] hover:border-[var(--color-accent-cyan)] hover:bg-[rgba(0,212,255,0.02)]"
+              }`}
+            >
+              <input {...getInputProps()} />
+              <div className="flex flex-col items-center gap-4">
+                <div
+                  className={`w-16 h-16 rounded-2xl flex items-center justify-center transition-colors ${
+                    isDragActive
+                      ? "bg-[rgba(0,212,255,0.15)]"
+                      : "bg-[rgba(0,212,255,0.08)]"
+                  }`}
+                >
+                  <Upload className="w-8 h-8 text-[var(--color-accent-cyan)]" />
+                </div>
+                <div>
+                  <p className="text-lg font-semibold text-[var(--color-text-primary)]">
+                    {isDragActive ? "Drop your image here" : label}
+                  </p>
+                  <p className="text-sm text-[var(--color-text-muted)] mt-1">
+                    Drag & drop or click to browse • PNG, JPG, WebP up to 10MB
+                  </p>
+                </div>
               </div>
             </div>
           </motion.div>
