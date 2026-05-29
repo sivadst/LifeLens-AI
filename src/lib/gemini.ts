@@ -1,0 +1,17 @@
+import { GoogleGenerativeAI } from "@google/generative-ai";
+
+const apiKey = process.env.GEMINI_API_KEY || "";
+
+export const genAI = new GoogleGenerativeAI(apiKey);
+
+export function getGeminiVision() {
+  return genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+}
+
+export function getGeminiChat() {
+  return genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+}
+
+export function isGeminiConfigured(): boolean {
+  return !!process.env.GEMINI_API_KEY;
+}
