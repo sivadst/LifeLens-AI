@@ -202,26 +202,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
-## 🌐 Deployment
 
-### Vercel (Recommended)
-
-1. Push your code to GitHub
-2. Import project at [vercel.com/new](https://vercel.com/new)
-3. Add environment variables in Vercel dashboard
-4. Deploy! ✨
-
-### Netlify
-
-1. Push your code to GitHub
-2. Import at [app.netlify.com](https://app.netlify.com)
-3. Build command: `npx prisma generate && npm run build`
-4. Add environment variables
-5. Deploy! ✨
-
-> **Note:** For production, switch from SQLite to PostgreSQL by updating the Prisma schema provider and `DATABASE_URL`.
-
----
 
 ## 🎨 Design Philosophy
 
@@ -265,11 +246,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
----
 
-## 📄 License
-
-This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
 
 ---
 
