@@ -235,7 +235,7 @@ export default function FoodVisionPage() {
                         border: "1px solid rgba(0,212,255,0.2)",
                         borderRadius: "12px",
                       }}
-                      formatter={(value: number) => [`${value}% DV`, "Amount"]}
+                      formatter={(value: any) => [`${value}% DV`, "Amount"]}
                     />
                     <Bar dataKey="value" fill="#00d4ff" radius={[0, 4, 4, 0]} />
                   </BarChart>
